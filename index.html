@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Pitchlore: learn the lore, own the over. Rule like an umpire, set the field, score real matches and level up.">
+<meta property="og:title" content="Pitchlore: learn the lore, own the over">
+<meta property="og:description" content="Out or not out? Rule on cricket’s big calls, set the field, score your own matches and level up from Net bowler to Legend.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0f6b4f">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8F%8F%3C/text%3E%3C/svg%3E">
+<title>Pitchlore – learn the lore, own the over</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;800&display=swap">
+<style>
+:root{--bg:#f3f1ea;--sf:#fff;--tx:#16211b;--mu:#66726b;--ln:#d9d6ca;--a:#0f6b4f;--b:#b3261e;--ac:#e8e4d6;--g:#cfe3cf;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1713;--sf:#18231d;--tx:#eef1ea;--mu:#93a39a;--ln:#2b3a32;--a:#4cc79a;--b:#ff7a6e;--ac:#22312a;--g:#1d3a2a}}
+:root[data-theme="dark"]{--bg:#0f1713;--sf:#18231d;--tx:#eef1ea;--mu:#93a39a;--ln:#2b3a32;--a:#4cc79a;--b:#ff7a6e;--ac:#22312a;--g:#1d3a2a}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+.w{max-width:600px;margin:0 auto;padding:16px 16px 48px}
+h1,.n{font-family:"Bricolage Grotesque",system-ui,sans-serif}
+h1{font-size:34px;line-height:1.05;margin:8px 0 4px;font-weight:800;letter-spacing:-.02em}
+.sub{color:var(--mu);margin:0 0 14px}
+nav{display:flex;gap:4px;background:var(--ac);padding:4px;border-radius:12px;margin-bottom:16px;position:sticky;top:env(safe-area-inset-top,0px);z-index:5;overflow-x:auto}
+nav button{flex:1;border:0;background:none;color:var(--tx);font:600 14px inherit;font-family:inherit;padding:10px 12px;border-radius:9px;cursor:pointer;white-space:nowrap}
+nav button[aria-selected=true]{background:var(--sf);box-shadow:0 1px 3px #0002}
+button:focus-visible,textarea:focus-visible{outline:2px solid var(--a);outline-offset:2px}
+.seg{display:flex;gap:6px;margin:0 0 10px;flex-wrap:wrap}
+.seg button,.opt{border:1px solid var(--ln);background:var(--sf);color:var(--tx);padding:8px 14px;border-radius:99px;font:inherit;font-size:14px;cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--tx);color:var(--bg)}
+svg{width:100%;height:auto;display:block;touch-action:manipulation;border-radius:14px}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:12px;padding:14px;margin-top:12px}
+.warn{color:var(--b)}.ok{color:var(--a)}
+.pri{border:0;background:var(--a);color:var(--bg);padding:12px 18px;border-radius:10px;font:600 15px inherit;font-family:inherit;cursor:pointer;margin-top:8px}
+.opts{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.opt{font-size:16px;padding:12px 18px}
+.big{font:800 56px/1 "Bricolage Grotesque",sans-serif}
+.big small{font-size:18px;color:var(--mu);font-weight:500}
+#ans{white-space:pre-wrap}
+select,input{width:100%;padding:11px;border-radius:10px;border:1px solid var(--ln);background:var(--sf);color:var(--tx);font:inherit}
+details{border-bottom:1px solid var(--ln);padding:10px 0}summary{cursor:pointer;font-weight:600}details p{margin:6px 0 0;color:var(--mu)}
+.fm{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.fm div{background:var(--sf);border:1px solid var(--ln);border-radius:12px;padding:10px;font-size:13px}.fm b{display:block;font-family:"Bricolage Grotesque",sans-serif;font-size:20px}
+.pad{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}.pad button{padding:16px 0;font:800 18px "Bricolage Grotesque",sans-serif;border:1px solid var(--ln);border-radius:12px;background:var(--sf);color:var(--tx);cursor:pointer}.pad .x{background:var(--ac);font-size:14px}.pad .w{background:var(--b);color:#fff;border:0}.pad button[aria-pressed=true]{outline:3px solid var(--a)}
+.ball{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:34px;border-radius:99px;background:var(--ac);font:800 15px "Bricolage Grotesque",sans-serif;padding:0 6px}
+.tens{height:8px;border-radius:4px;background:linear-gradient(90deg,var(--a),#e0b030,var(--b));position:relative}.tens i{position:absolute;top:-5px;width:4px;height:18px;background:var(--tx);border-radius:2px}
+.seg button:disabled,.opt:disabled{opacity:.4}
+body{background:radial-gradient(900px 420px at 0% -5%,#cfe6d3 0,transparent 60%),var(--bg);background-attachment:fixed}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) body{background:radial-gradient(900px 420px at 0% -5%,#173a2b 0,transparent 60%),var(--bg)}}
+.hero{display:flex;align-items:center;flex-wrap:wrap;gap:14px;color:#fff;border-radius:22px;padding:18px;margin:4px 0 14px;background:repeating-linear-gradient(90deg,#ffffff10 0 26px,transparent 26px 52px),linear-gradient(135deg,#0f6b4f,#06382a);box-shadow:0 14px 30px -16px #06382a}
+.hero h1{color:#fff;margin:0;font-size:42px}.hero p{margin:2px 0 0;color:#cfe8dc}
+.hero .bl{width:58px;height:58px;animation:roll 14s linear infinite;flex:none}
+@keyframes roll{to{transform:rotate(360deg)}}
+#lv{flex-basis:100%;font-size:13px;display:flex;align-items:center;gap:10px;color:#e6f4ec}#lv b{white-space:nowrap}
+.xb{flex:1;height:8px;background:#ffffff30;border-radius:4px;overflow:hidden}.xb i{display:block;height:100%;background:linear-gradient(90deg,#ffd166,#ff7a6e);border-radius:4px;transition:width .5s}
+.card{border-radius:16px;box-shadow:0 10px 26px -18px #0006}
+#app.in>*{animation:up .35s ease both}@keyframes up{from{opacity:0;transform:translateY(8px)}}
+.pri{background:linear-gradient(135deg,var(--a),#0b8f66);box-shadow:0 8px 18px -10px var(--a);transition:transform .12s}
+button:active{transform:scale(.97)}
+.opt:hover,.seg button:hover{border-color:var(--a)}
+nav{border-radius:16px;backdrop-filter:blur(8px)}
+nav button[aria-selected=true]{background:var(--a);color:var(--bg);box-shadow:0 6px 14px -8px var(--a)}
+.ball.bw{background:var(--b);color:#fff}.ball.b4{background:var(--a);color:var(--bg)}.ball.b6{background:#7a3fd1;color:#fff}
+.cf{position:fixed;top:-24px;font-size:22px;pointer-events:none;z-index:50;animation:fall 1.6s ease-in forwards}@keyframes fall{to{transform:translateY(110vh) rotate(540deg);opacity:.3}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.note{font-size:12.5px;color:var(--mu);margin-top:24px}
+</style>
+</head>
+<body>
+<div class="w">
+<header class="hero"><svg class="bl" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29" fill="#c0392b"/><circle cx="32" cy="32" r="29" fill="none" stroke="#00000030" stroke-width="2"/><path d="M8 22c16 9 32 9 48 0M8 42c16-9 32-9 48 0" stroke="#fff" stroke-width="2.2" fill="none" stroke-dasharray="3 3"/></svg><div><h1>Pitchlore</h1><p>Learn the lore. Own the over.</p></div><div id="lv"></div></header>
+<nav role="tablist" id="nav"></nav>
+<main id="app"></main>
+<p class="note">Rules follow the MCC Laws of Cricket (2017 Code, 3rd Edition, 2022). Fielding circles come from ICC playing conditions, not the Laws, so your competition may differ. Check the current playing conditions of your competition before relying on any rule here. AI-generated players and Captain’s Call situations can occasionally contain mistakes. Match Reel saves your matches and season archive in this browser only.</p>
+</div>
+<script>
+(function(){if(typeof window.claude!=='undefined')return;
+/* Self-hosted adapter: AI goes through the Netlify function, downloads use a normal browser download. */
+function call(prompt,json){return fetch('/.netlify/functions/ai',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt:String(prompt),json:!!json})}).then(function(r){if(r.status===429){var e=new Error('rate_limited');e.code='rate_limited';throw e}if(!r.ok)throw new Error('ai_'+r.status);return r.json()})}
+var sample=function(q){return call(q,false).then(function(j){return{text:j.text||''}})};
+sample.json=function(q){return call(q,true).then(function(j){return j.value})};
+var dl={save:function(o){return new Promise(function(res){var u=URL.createObjectURL(o.data),a=document.createElement('a');a.href=u;a.download=o.filename;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u)},3000);res()})}};
+window.claude={use:function(n){return Promise.resolve(n==='sample'?sample:n==='downloads'?dl:null)}}})();
+
+var $=function(s){return document.querySelector(s)},app=$("#app");
+/* ---------- FIELD LAB ---------- */
+var S=[150,190],C=[150,160],K=[150,222];
+var fl={f:[],lhb:false,mode:"T20 powerplay",intent:"Attack",bowl:"Pace",cap:""};
+var MODES={"Test":null,"T20 powerplay":2,"T20 rest":5,"ODI 1–10":2,"ODI 11–40":4,"ODI 41–50":5};
+var SEC=["Straight","Cover","Point","Third man","Behind the keeper","Fine leg","Square leg","Midwicket"];
+function dist(a,b){return Math.hypot(a[0]-b[0],a[1]-b[1])}
+function sector(p){var dx=p[0]-S[0];if(fl.lhb)dx=-dx;var a=Math.atan2(dx,-(p[1]-S[1]))*180/Math.PI;return Math.round(((a+360)%360)/45)%8}
+function an(){var f=fl.f,o={};o.out=f.filter(function(p){return dist(p,C)>53}).length;
+o.lb=f.filter(function(p){var x=fl.lhb?300-p[0]:p[0];return x<150&&p[1]>S[1]}).length;
+o.catch=f.filter(function(p){return dist(p,S)<45}).length;o.rid=f.filter(function(p){return dist(p,S)>120}).length;
+var c=[0,0,0,0,0,0,0,0];f.forEach(function(p){if(dist(p,S)>8)c[sector(p)]++});o.open=SEC.filter(function(_,i){return !c[i]});return o}
+function field(){var o=an(),lim=MODES[fl.mode],n=fl.f.length,msgs=[];
+if(n<9)msgs.push(["Place "+(9-n)+" more fielder"+(9-n>1?"s":"")+" (tap the ground).",""]);
+if(lim!=null&&o.out>lim)msgs.push(["Illegal under ICC playing conditions: "+o.out+" outside the circle, max "+lim+" in this phase. This can be called a no-ball.","warn"]);
+if(lim!=null&&n==9&&o.out<=lim)msgs.push(["Circle rule satisfied ("+o.out+" out, max "+lim+").","ok"]);
+if(o.lb>2)msgs.push(["No-ball (Law 28.4): "+o.lb+" fielders behind the popping crease on the leg side, max 2.","warn"]);
+if(n>=3&&o.open.length)msgs.push(["Open sectors: "+o.open.join(", ")+".",""]);
+var hint={Attack:o.catch>=3?"Attacking: "+o.catch+" catchers close in.":"Attacking needs at least 3 fielders within catching range (now "+o.catch+").",Contain:o.rid>=3?"Containing: "+o.rid+" boundary riders.":"Containing needs 3+ boundary riders (now "+o.rid+")."};
+msgs.push([hint[fl.intent],o[fl.intent=="Attack"?"catch":"rid"]>=3?"ok":""]);
+var sp=[0,45,90,135,180,225,270,315].map(function(a){var r=a*Math.PI/180;return'<line x1="150" y1="190" x2="'+(150+Math.sin(r)*150)+'" y2="'+(190-Math.cos(r)*150)+'" stroke="var(--ln)" stroke-dasharray="2 4"/>'}).join("");
+var sv='<svg id="g" viewBox="0 0 300 300" role="img" aria-label="Cricket field. Tap to place fielders."><circle cx="150" cy="160" r="140" fill="var(--g)" stroke="var(--a)" stroke-width="2"/><circle cx="150" cy="160" r="53" fill="none" stroke="var(--a)" stroke-dasharray="5 4"/><rect x="146" y="130" width="8" height="60" fill="#c9b27a"/>'+sp+'<text x="258" y="165" font-size="11" fill="var(--mu)" text-anchor="middle">'+(fl.lhb?"leg":"off")+'</text><text x="42" y="165" font-size="11" fill="var(--mu)" text-anchor="middle">'+(fl.lhb?"off":"leg")+'</text><circle cx="150" cy="114" r="6" fill="var(--b)"/><circle cx="'+K[0]+'" cy="'+K[1]+'" r="6" fill="var(--tx)"/><rect x="146" y="186" width="8" height="8" fill="var(--a)"/>'+fl.f.map(function(p){return'<circle cx="'+p[0]+'" cy="'+p[1]+'" r="8" fill="var(--sf)" stroke="var(--a)" stroke-width="3"/>'}).join("")+'</svg>';
+app.innerHTML='<div class="seg">'+Object.keys(MODES).map(function(m){return'<button data-m="'+m+'" aria-pressed="'+(fl.mode==m)+'">'+m+'</button>'}).join("")+'</div><div class="seg"><button data-h="0" aria-pressed="'+!fl.lhb+'">Right-hand bat</button><button data-h="1" aria-pressed="'+fl.lhb+'">Left-hand bat</button><button data-b="Pace" aria-pressed="'+(fl.bowl=="Pace")+'">Pace</button><button data-b="Spin" aria-pressed="'+(fl.bowl=="Spin")+'">Spin</button></div><div class="seg">'+["Attack","Contain"].map(function(i){return'<button data-i="'+i+'" aria-pressed="'+(fl.intent==i)+'">'+i+'</button>'}).join("")+'<button id="clr">Clear</button></div>'+sv+
+'<div class="card">'+msgs.map(function(m){return'<div class="'+m[1]+'">'+m[0]+'</div>'}).join("")+'</div><button class="pri" id="cap">Ask the captain</button><div class="card" id="ans" style="display:'+(fl.cap?"block":"none")+'">'+fl.cap.replace(/</g,"&lt;")+'</div>';
+$("#g").onclick=function(e){var r=this.getBoundingClientRect(),p=[(e.clientX-r.left)/r.width*300,(e.clientY-r.top)/r.height*300],i=fl.f.findIndex(function(q){return dist(p,q)<12});
+if(i>-1)fl.f.splice(i,1);else if(fl.f.length<9&&dist(p,C)<138&&dist(p,K)>10&&dist(p,S)>8&&!(Math.abs(p[0]-150)<12&&p[1]>126&&p[1]<192))fl.f.push(p);field()};
+app.querySelectorAll("[data-m]").forEach(function(b){b.onclick=function(){fl.mode=b.dataset.m;field()}});
+app.querySelectorAll("[data-h]").forEach(function(b){b.onclick=function(){fl.lhb=b.dataset.h=="1";field()}});
+app.querySelectorAll("[data-b]").forEach(function(b){b.onclick=function(){fl.bowl=b.dataset.b;field()}});
+app.querySelectorAll("[data-i]").forEach(function(b){b.onclick=function(){fl.intent=b.dataset.i;field()}});
+$("#clr").onclick=function(){fl.f=[];fl.cap="";field()};
+$("#cap").onclick=function(){if(fl.f.length<9){$("#ans").style.display="block";$("#ans").textContent="Place all 9 fielders first.";return}
+var d=fl.f.map(function(p){return SEC[sector(p)]+" at "+Math.round(dist(p,S)*.52)+"m"}).join("; ");
+var q="You are a sharp, plain-spoken international cricket captain. Critique this field in under 90 words: what it protects, the biggest hole, and one change you would make. Setup: "+fl.mode+", "+(fl.lhb?"left":"right")+"-handed batter, "+fl.bowl+" bowler, intent "+fl.intent+". Fielders (besides bowler and keeper): "+d+". Plain text only.";
+$("#ans").style.display="block";$("#ans").textContent="Thinking…";
+(typeof claude==="undefined"?Promise.resolve(null):claude.use("sample")).then(function(s){if(!s){$("#ans").textContent="The captain isn’t available in this view.";return}
+return s(q,{onText:function(x){$("#ans").textContent=x.text},cache:false}).then(function(r){fl.cap=r.text})}).catch(function(){$("#ans").textContent="The captain couldn’t answer. Try again."})}}
+/* ---------- UMPIRE DESK ---------- */
+var Q=[["The ball pitches in line and hits the front pad in line. It would have hit leg stump. No shot was offered.",["Out (LBW)","Not out"],0,"Pitched in line, hit in line, going on to hit the stumps: out."],
+["The ball pitches outside leg stump and hits the pad in line. It would have hit middle stump.",["Out (LBW)","Not out"],1,"A ball pitching outside leg stump can never be LBW."],
+["The ball pitches in line, hits the pad outside off stump, and would hit the stumps. The batter offered no shot.",["Out (LBW)","Not out"],1,"With no shot offered, impact outside off stump is not out."],
+["Same delivery, but this time the batter played a shot.",["Out (LBW)","Not out"],0,"If a shot is offered, impact outside off stump can still be out."],
+["The ball brushes the glove on the bat handle and the keeper catches it.",["Out (caught)","Not out"],0,"A glove holding the bat counts as part of the bat."],
+["The bowler’s front foot lands wholly beyond the popping crease and the batter is bowled.",["Out (bowled)","No-ball, not out"],1,"It is a no-ball, and the batter can’t be bowled off one."],
+["The keeper gathers the ball in front of the stumps before it reaches the batter.",["No-ball","Legal delivery"],0,"The keeper must stay wholly behind the stumps until the ball passes them or touches the bat or batter."],
+["A fielder takes a clean catch but his foot touches the boundary rope while he holds the ball.",["Out (caught)","Six runs"],1,"Touching the boundary while holding the ball means the boundary is scored."],
+["The ball hits the fielding team’s helmet lying on the ground behind the keeper.",["5 penalty runs","Dead ball, no runs"],0,"Law 28: the batting side is awarded 5 penalty runs."],
+["The non-striker is out of his crease and the bowler breaks the wicket before delivering.",["Run out","Not out"],0,"Since 2022 this is a run out, under the normal run-out law."],
+["A fast bowler delivers a full toss above waist height.",["No-ball","Legal delivery"],0,"A fast full toss above waist height is a no-ball."],
+["The ball bounces twice before it reaches the striker.",["No-ball","Legal delivery"],0,"Bouncing more than once makes it a no-ball."]];
+var Q2=[["The ball pitches in line and hits the front pad in line. It would have hit leg stump. No shot was offered.",["Out (LBW)","Not out"],0,"Pitched in line, impact in line, going on to hit the stumps: out. (Law 36)"],
+["The ball pitches outside leg stump and hits the pad in line. It would have hit middle stump.",["Out (LBW)","Not out"],1,"A ball pitching outside leg stump can never be LBW. (Law 36)"],
+["The ball pitches in line, hits the pad outside off stump, and would hit the stumps. The batter offered no shot.",["Out (LBW)","Not out"],1,"With no shot offered, impact outside off stump is not out. (Law 36)"],
+["Same delivery, but this time the batter played a shot.",["Out (LBW)","Not out"],0,"If a shot is offered, impact outside off stump can still be out. (Law 36)"],
+["The ball brushes the glove on the bat handle and the keeper catches it.",["Out (caught)","Not out"],0,"A glove holding the bat counts as part of the bat. (Law 33)"],
+["The bowler’s front foot lands wholly beyond the popping crease and the batter is bowled.",["Out (bowled)","No-ball, not out"],1,"It is a no-ball, and the batter can’t be bowled off one. (Law 21)"],
+["The keeper gathers the ball in front of the stumps before it reaches the batter.",["No-ball","Legal delivery"],0,"The keeper must stay wholly behind the stumps until the ball passes them or touches the bat or batter. (Law 27.3)"],
+["A fielder takes a clean catch but his foot touches the boundary rope while he holds the ball.",["Out (caught)","Six runs"],1,"Touching the boundary while holding the ball means the boundary is scored. (Laws 19 and 33)"],
+["The ball hits the fielding team’s helmet lying on the ground behind the keeper.",["5 penalty runs","Dead ball, no runs"],0,"The batting side is awarded 5 penalty runs. (Law 28.2)"],
+["The non-striker is out of his crease and the bowler breaks the wicket before delivering.",["Run out","Not out"],0,"Since October 2022 this is a normal run out, no longer unfair play. (Law 38.3)"],
+["A fast bowler delivers a full toss that would pass above the striker’s waist.",["No-ball","Legal delivery"],0,"A non-pitching delivery above waist height of the upright striker at the popping crease is unfair and a no-ball. (Law 41.7.1)"],
+["The ball bounces twice before it reaches the striker.",["No-ball","Legal delivery"],0,"Bouncing more than once before the popping crease makes it a no-ball. (Law 21.7)"],
+["A batter is caught after the two batters crossed in the air. It isn’t the end of an over.",["The new batter faces next","The non-striker faces next"],0,"Since October 2022 the incoming batter always takes strike after a catch. (Law 18.11)"],
+["The striker is racing down the pitch. Before his delivery stride, the bowler throws the ball at the stumps.",["Run out","Dead ball"],1,"Since 2022 this is a dead ball. It used to be a no-ball. (Law 21.4)"],
+["As the bowler runs in, a fielder deliberately makes an unfair movement to distract the striker.",["5 penalty runs and dead ball","Play on, no penalty"],0,"Deliberate unfair movement now costs the fielding side 5 penalty runs, as well as a dead ball. (Laws 27.4 and 28.6)"],
+["The striker shuffles across to the off side. The ball goes down the leg side, wide of where he ended up but within reach of where he stood as the bowler started his run-up.",["Wide","Not a wide"],1,"Since 2022 a wide is judged against where the striker has stood since the run-up began as well as his final position. (Law 22.1)"],
+["A delivery is so wide of the pitch that the striker would have to leave the pitch to play it.",["Wide","No-ball"],1,"Since 2022 a ball that forces the batter off the pitch is a no-ball, not a wide. (Laws 21 and 22)"],
+["In an ICC Test, the incoming batter isn’t ready to face within two minutes of the previous wicket.",["The fielding side can appeal for timed out","No time limit applies"],0,"ICC events allow 2 minutes in Tests and ODIs and 90 seconds in T20Is, shorter than the 3 minutes in Law 40."]];
+function pick(){return Q2.slice().sort(function(){return Math.random()-.5}).slice(0,10)}
+Q=pick();var u={i:0,s:0,st:0,best:0,done:false,pick:-1};
+function ump(){if(u.i>=Q.length){if(u.s>=Q.length*.7)pop();var r=u.s>=Q.length*.9?"Elite panel":u.s>=Q.length*.7?"International panel":u.s>=Q.length*.45?"First-class umpire":"Club umpire";
+app.innerHTML='<div class="card"><div class="big">'+u.s+'<small> / '+Q.length+'</small></div><p><b>'+r+'</b>. Best streak: '+u.best+'.</p><button class="pri" id="rs">Go again</button> <button class="opt" id="sh">Share result</button><div id="shm" class="sub"></div></div>';$("#sh").onclick=function(){share("Pitchlore Umpire Desk: "+u.s+"/"+Q.length+" ("+r+"). Can you beat me?")};$("#rs").onclick=function(){Q=pick();u={i:0,s:0,st:0,best:u.best,pick:-1};ump()};return}
+var q=Q[u.i],a=u.pick>-1;
+app.innerHTML='<p class="sub">Call '+(u.i+1)+' of '+Q.length+'. Streak: '+u.st+'</p><div class="card" style="font-size:18px">'+q[0]+'</div><div class="opts">'+q[1].map(function(o,i){return'<button class="opt" data-o="'+i+'"'+(a?" disabled":"")+(a&&i==q[2]?' style="border-color:var(--a);border-width:2px"':"")+'>'+o+'</button>'}).join("")+'</div>'+
+(a?'<div class="card"><b class="'+(u.pick==q[2]?"ok":"warn")+'">'+(u.pick==q[2]?"Correct.":"Wrong.")+'</b> '+q[3]+'</div><button class="pri" id="nx">Next call</button>':"");
+app.querySelectorAll("[data-o]").forEach(function(b){b.onclick=function(){u.pick=+b.dataset.o;if(u.pick==q[2]){u.s++;u.st++;u.best=Math.max(u.best,u.st);xp(10)}else u.st=0;ump()}});
+if(a)$("#nx").onclick=function(){u.i++;u.pick=-1;ump()}}
+/* ---------- BOOK CRICKET ---------- */
+var bc=null;
+function book(){if(!bc)bc={r:0,w:0,b:24,t:25+Math.floor(Math.random()*26),pg:null,log:[]};
+var over=bc.b==0||bc.w==3||bc.r>=bc.t,res=bc.r>=bc.t?"You chased it down.":"Fell short by "+(bc.t-bc.r)+".";if(over&&bc.r>=bc.t&&!bc.aw){bc.aw=1;xp(10);pop()}
+app.innerHTML='<p class="sub">Old school-desk rules: open a book, read the last digit of the page. 1–4 and 6 are runs, 5 is a dot, 0 is out, and 7–9 means flip again.</p><div class="card"><div class="big">'+bc.r+'<small>/'+bc.w+' &nbsp; target '+bc.t+'</small></div><div style="color:var(--mu)">'+bc.b+' balls left, '+(3-bc.w)+' wickets in hand'+(bc.pg?'. Last page: '+bc.pg:"")+'</div></div>'+
+(over?'<div class="card"><b>'+res+'</b></div><button class="pri" id="rb">New match</button> <button class="opt" id="sh">Share</button><div id="shm" class="sub"></div>':'<button class="pri" id="fl">Flip the page</button>')+'<div class="card" style="color:var(--mu);font-size:14px">'+(bc.log.slice(-18).join("  ")||"Ball by ball appears here.")+'</div>';
+if(over)$("#sh").onclick=function(){share("Pitchlore Book Cricket: "+bc.r+"/"+bc.w+" against a target of "+bc.t+". "+res)};if(over)$("#rb").onclick=function(){bc=null;book()};else $("#fl").onclick=function(){var p,d;do{p=1+Math.floor(Math.random()*400);d=p%10}while(d>6);bc.pg=p;bc.b--;if(d==0){bc.w++;bc.log.push("W")}else if(d==5)bc.log.push("•");else{bc.r+=d;bc.log.push(String(d))}book()}}
+/* ---------- SHARE + STORAGE ---------- */
+function share(t){var m=$("#shm");function show(x){if(m)m.textContent=x}try{if(navigator.share){navigator.share({text:t}).catch(function(){});return}}catch(e){}try{navigator.clipboard.writeText(t).then(function(){show("Copied. Paste it anywhere.")},function(){show(t)})}catch(e){show(t)}}
+var LS={get:function(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},set:function(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+/* ---------- DAILY MYSTERY CRICKETER ---------- */
+var DP=[["Don Bradman","Australian batter","Retired in 1948","His Test average was 99.94","Known simply as The Don"],["Sachin Tendulkar","Right-handed batter from Mumbai","Made his Test debut at 16","Scored 100 international centuries","Known as the Little Master"],["Shane Warne","Australian leg-spinner","Bowled the Ball of the Century at Old Trafford in 1993","Took 708 Test wickets","Nicknamed Warnie"],["Muttiah Muralitharan","Spinner from Sri Lanka","Retired in 2010 with a wicket in his last Test","Holds the record for most Test wickets","Finished with 800 Test wickets"],["Kapil Dev","All-rounder from Haryana","Captained India to a World Cup","Lifted the 1983 World Cup at Lord’s","Hit 175 not out against Zimbabwe in that tournament"],["Brian Lara","Left-handed batter from Trinidad","Held both the Test and first-class individual records","Made 400 not out against England","Made 501 not out for Warwickshire"],["AB de Villiers","South African batter nicknamed Mr 360","Also a quality wicketkeeper","Hit a 31-ball ODI hundred","Holds the fastest ODI century"],["MS Dhoni","Wicketkeeper-batter from Ranchi","Captained India to the 2007 T20 World Cup","Finished the 2011 World Cup final with a six","Nicknamed Captain Cool"],["Virat Kohli","Right-handed batter from Delhi","Led India’s Test side for several years","A chasing specialist in ODIs","Holds the record for most ODI centuries"],["Imran Khan","Pakistani fast-bowling all-rounder","Captained a World Cup winner in 1992","Led Pakistan to glory in Australia and New Zealand","Later became his country’s Prime Minister"],["Wasim Akram","Left-arm fast bowler","A master of reverse swing","Took 502 ODI wickets","Known as the Sultan of Swing"],["Viv Richards","Batter from Antigua","Famous for not wearing a helmet","Captained a dominant West Indies side","Hit a Test hundred off 56 balls in 1986"],["Adam Gilchrist","Australian wicketkeeper-batter","Opened the batting in ODIs","Made a 57-ball Test hundred against England","Played a World Cup final innings with a squash ball in his glove"],["Ben Stokes","England all-rounder born in New Zealand","Hero of the 2019 World Cup final","Won the 2019 Headingley Ashes Test","Scored 135 not out at Headingley"],["Glenn McGrath","Tall Australian seam bowler","Famous for pinpoint line and length","Took 563 Test wickets","Nicknamed Pigeon"],["Jacques Kallis","South African all-rounder","Scored over 13,000 Test runs","Also took over 290 Test wickets","Rare member of the 10,000 runs and 250 wickets Test club"],["Rahul Dravid","Indian batter famed for patience","Nicknamed The Wall","Scored over 10,000 Test runs","Later coached India to the 2024 T20 World Cup"],["Garry Sobers","All-rounder from Barbados","Left-handed batter who bowled several styles","First to hit six sixes in an over in first-class cricket","Made 365 not out in a Test in 1958"]];
+DP=DP.filter(function(p){return["Don Bradman","Garry Sobers","Kapil Dev","Viv Richards","Imran Khan"].indexOf(p[0])<0});
+var NM=DP.map(function(p){return p[0]}).concat(["Steve Smith","Joe Root","Kane Williamson","Babar Azam","Ricky Ponting","Dale Steyn"]).sort(),dd=null;
+function dn(){return Math.floor(Date.now()/864e5)}
+function stk(){return LS.get("cl-s")||{n:0,best:0,last:0}}
+function daily(p){if(p==="ai")return aiRound();if(p===true)dd={idx:Math.floor(Math.random()*DP.length),g:[],done:false,won:false,pr:true};else if(!dd||p===false){var sv=LS.get("cl-day");dd=sv&&sv.v===2&&sv.day==dn()&&sv.idx<DP.length?sv:{v:2,day:dn(),idx:dn()%DP.length,g:[],done:false,won:false,pr:false}}
+var P=dd.P||DP[dd.idx],n=dd.done?4:Math.min(dd.g.length+1,4),s=stk(),h='<div class="card" style="margin-top:0"><b>'+(dd.pr?"Practice round":"Today’s mystery cricketer (played since the 1990s)")+'</b><div style="color:var(--mu)">\ud83d\udd25 Daily streak: '+s.n+' &nbsp; Best: '+s.best+'</div></div>';
+for(var i=0;i<n;i++)h+='<div class="card"><small style="color:var(--mu)">Clue '+(i+1)+'</small><br>'+esc(P[i+1])+'</div>';
+if(!dd.done)h+='<div style="margin-top:12px"><input id="gs" type="text" placeholder="Type the player’s name" autocomplete="off" aria-label="Your guess"></div><button class="pri" id="gb">Guess ('+(4-dd.g.length)+' left)</button>'+(dd.g.length?'<div class="sub" style="margin-top:8px">Not: '+esc(dd.g.join(", "))+'</div>':"");
+else h+='<div class="card"><b class="'+(dd.won?"ok":"warn")+'">'+(dd.won?"Got it in "+dd.g.length+" of 4.":"It was "+esc(P[0])+".")+'</b></div><button class="pri" id="s2">Share</button> <button class="opt" id="pc">Unlimited rounds (any player)</button>'+(dd.pr?' <button class="opt" id="td">Today’s</button>':"")+'<div id="shm" class="sub"></div>';
+app.innerHTML=h;
+if(!dd.done)$("#gb").onclick=function(){var v=$("#gs").value.trim();if(!v)return;dd.g.push(v.slice(0,60));if(hit(v,P)){dd.done=dd.won=true;xp(dd.pr?10:20);pop()}else if(dd.g.length>=4)dd.done=true;
+if(dd.done&&!dd.pr){var t=stk(),d=dd.day;if(dd.won){t.n=t.last==d-1?t.n+1:1;t.best=Math.max(t.best,t.n)}else t.n=0;t.last=d;LS.set("cl-s",t)}if(!dd.pr)LS.set("cl-day",dd);daily()};
+else{$("#s2").onclick=function(){share("Pitchlore Daily #"+(dd.pr?"practice":dd.day-20453)+" "+(dd.won?dd.g.length:"X")+"/4\n"+dd.g.map(function(x){return hit(x,P)?"🟩":"🟥"}).join(""))};$("#pc").onclick=function(){daily("ai")};if(dd.pr)$("#td").onclick=function(){daily(false)}}}
+/* ---------- NEW HERE? ---------- */
+var TM=[["Over","Six legal balls bowled by one bowler. Then a different bowler takes over from the other end."],["Duck","Getting out without scoring a run."],["Yorker","A ball pitched right at the batter’s toes. Very hard to hit."],["Googly","A leg-spinner’s trick ball that turns the opposite way to what the batter expects."],["Maiden","An over in which the batting side scores no runs."],["Nightwatchman","A lower-order batter sent in late in the day so the better batters are protected."],["Powerplay","The early overs of a limited-overs game when fewer fielders are allowed far from the bat."],["Follow-on","In a Test, a team that leads by 200 or more in the first innings can make the other side bat again straight away."],["Free hit","After a front-foot no-ball in limited-overs cricket, the next ball can’t get the batter out in most ways."],["Declaration","A captain ends his own team’s innings early to give the bowlers time to win."],["Hat-trick","Three wickets by one bowler in three balls in a row."],["DLS","The Duckworth-Lewis-Stern method, used to set a fair target when rain cuts a match short."],["2022: new batter after a catch","The incoming batter always faces the next ball, even if the batters crossed while the ball was in the air, unless it’s the end of an over (Law 18.11)."],["Penalty runs","Runs given to a side for an offence. Deliberate unfair movement by a fielder as the bowler runs in costs 5 (Laws 27.4 and 28.6), and so does the ball hitting a helmet left on the ground (Law 28.2)."],["Non-striker run out","Since October 2022, a bowler running out a non-striker who leaves the crease early is a normal run out (Law 38.3), not unfair play."],["Timed out","A new batter must be ready in time or the fielding side can appeal. ICC events allow 2 minutes in Tests and ODIs and 90 seconds in T20Is."],["Dead ball","Play stops and nothing after it counts. Since 2022 it is also called if a person, animal or object interferes with either side (Law 20.4.2.12)."]];
+function learn(){app.innerHTML='<p class="sub">Never watched a match? Start here. Then play the other tabs.</p><div class="fm"><div><b>Test</b>Five days, two innings each. The purest, slowest form.</div><div><b>ODI</b>50 overs a side. One long afternoon and evening.</div><div><b>T20</b>20 overs a side. About three hours of fireworks.</div></div><p class="sub" style="margin-top:14px">The basic idea: one side bats and tries to score runs, the other bowls and fields and tries to get ten batters out. Then they swap. Most runs wins.</p>'+TM.map(function(t){return'<details><summary>'+t[0]+'</summary><p>'+t[1]+'</p></details>'}).join("")}
+/* ---------- AI HELPERS ---------- */
+function esc(x){return String(x).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function nz(x){return String(x).toLowerCase().replace(/[^a-z]/g,'')}
+function hit(v,P){var g=nz(v);if(g.length<3)return false;return[P[0]].concat(dd&&dd.al||[]).some(function(n){var w=String(n).split(' '),a=nz(n),l=nz(w[w.length-1]),f=nz(w[0]);return g==a||(g==l&&l.length>=4)||(g==f&&f.length>=5&&w.length>1)})}
+function ask(q){return(typeof claude==='undefined'?Promise.resolve(null):claude.use('sample')).then(function(s){if(!s)throw 0;return s.json(q,{cache:false})})}
+function rnd(a){return a[Math.floor(Math.random()*a.length)]}
+function aiRound(){app.innerHTML='<div class="card" style="margin-top:0">Finding a player…</div>';
+var c=rnd(['India','Australia','England','Pakistan','South Africa','New Zealand','West Indies','Sri Lanka','Bangladesh','Zimbabwe','Afghanistan','Ireland']),d=rnd(['1990s','2000s','2010s','2020s']);
+ask('Pick one men\u2019s international cricketer for a guessing game, to force variety: someone who played for '+c+' and debuted around the '+d+' (nearest fit if none, but they must have played international cricket in 1990 or later). Use only facts you are certain are true and widely documented. Return ONLY JSON: {"name":"full name","aliases":["surname","nickname","common short names"],"clues":["vague clue about country, role or era","medium clue","strong clue","very strong clue"]}. Never include the name or surname inside a clue.').then(function(r){if(!r||!r.name||!r.clues||r.clues.length<4)throw 0;dd={P:[r.name].concat(r.clues.slice(0,4)),al:r.aliases||[],g:[],done:false,won:false,pr:true};daily()}).catch(function(){app.innerHTML='<div class="card warn" style="margin-top:0">Couldn’t fetch a player. Try again.</div><button class="pri" id="rt">Try again</button>';$('#rt').onclick=aiRound})}
+/* ---------- CAPTAIN'S CALL ---------- */
+var cc={sc:null,res:null,busy:'',call:'',err:false,pts:LS.get('cl-c')||{p:0,n:0}};
+function cap(){var c=cc,n=c.pts.n,avg=n?c.pts.p/n:0,rk=!n?'Unranked':avg>=4?'Master tactician':avg>=3?'Seasoned skipper':'Learning captain';
+var h='<div class="card" style="margin-top:0"><b>'+rk+'</b><div style="color:var(--mu)">'+n+' calls, average '+avg.toFixed(1)+' out of 5</div></div>';
+if(c.busy)h+='<div class="card">'+c.busy+'</div>';
+else if(!c.sc)h+='<p class="sub" style="margin-top:12px">A fresh match situation every time. Make the call, and a veteran coach rates it.</p>'+(c.err?'<div class="warn">Couldn’t set the scene. Try again.</div>':'')+'<button class="pri" id="cn">New situation</button>';
+else{h+='<div class="card"><b>'+esc(c.sc.title)+'</b><p style="margin:6px 0 0">'+esc(c.sc.situation)+'</p></div>';
+if(!c.res)h+='<div class="opts">'+c.sc.options.map(function(o,i){return'<button class="opt" data-c="'+i+'" style="text-align:left">'+esc(o)+'</button>'}).join('')+'</div><div style="margin-top:12px"><input id="ci" type="text" placeholder="Or type your own call" autocomplete="off" aria-label="Your own call"></div><button class="pri" id="cm">Make this call</button>'+(c.err?'<div class="warn">Couldn’t judge that. Try again.</div>':'');
+else h+='<div class="card"><b>Your call: '+esc(c.call)+'</b><div class="big">'+c.res.s+'<small>/5</small></div><p style="margin:6px 0 0">'+esc(c.res.v)+'</p></div><button class="pri" id="cn">Next situation</button>'}
+app.innerHTML=h;var nb=$('#cn');if(nb)nb.onclick=capNew;
+app.querySelectorAll('[data-c]').forEach(function(b){b.onclick=function(){judge(c.sc.options[+b.dataset.c])}});
+var cm=$('#cm');if(cm)cm.onclick=function(){var v=$('#ci').value.trim();if(v)judge(v.slice(0,200))}}
+function capNew(){var f=rnd(['T20','ODI','Test']),p=rnd(['the death overs','the powerplay','the middle overs','the last session of the day','a rain-threatened innings']);cc.res=null;cc.sc=null;cc.err=false;cc.busy='Setting the scene…';cap();
+ask('Invent a realistic fictional cricket captaincy puzzle (no real teams or players), format '+f+', set in '+p+'. Return ONLY JSON: {"title":"short title","situation":"max 55 words: score, overs, wickets, bowlers left with types, batters at the crease, pitch or weather","options":["decision A","decision B","decision C"]}. Options must be under 12 words and genuinely different.').then(function(r){if(!r||!r.situation||!r.options||r.options.length<2)throw 0;cc.sc=r}).catch(function(){cc.sc=null;cc.err=true}).then(function(){cc.busy='';cap()})}
+function judge(call){var c=cc;c.call=call;c.busy='The coach is thinking…';c.err=false;cap();
+ask('Situation: '+c.sc.situation+' The captain decided: '+call+'. Judge like a veteran coach. Return ONLY JSON: {"score":an integer from 1 to 5,"verdict":"max 60 words on why it works or fails and what a stronger call could be"}').then(function(r){var s=Math.max(1,Math.min(5,Math.round(+r.score||3)));c.res={s:s,v:String(r.verdict||'')};c.pts.p+=s;c.pts.n++;xp(s*4);if(s>=4)pop();LS.set('cl-c',c.pts)}).catch(function(){c.err=true}).then(function(){c.busy='';cap()})}
+/* ---------- RULE REWIND ---------- */
+var RW=[['The overthrow final','Lord’s, 2019 World Cup final','With three balls left, Guptill’s throw hit the diving Ben Stokes’ bat and ran to the boundary. The batters had completed one run and had not yet crossed on the second when the throw was released. The umpires signalled six.',' What should the Laws have given?',['4 runs','5 runs','6 runs'],1,'Five. Under Law 19.8, an overthrow to the boundary scores the 4 plus runs completed, and a run in progress only counts if the batters had crossed at the instant of the throw. Umpire Kumar Dharmasena later accepted it was a mistake.','The wording wasn’t the problem, the application was.'],
+['The tie that wasn’t settled','2019 World Cup final','The final was tied after 50 overs and tied again after the Super Over. England won because they had hit more boundaries.','Today, what happens if a World Cup knockout is tied after a Super Over?',['Count the boundaries again','Play more Super Overs until there is a winner','Share the trophy'],1,'The ICC scrapped the boundary count-back later in 2019. Super Overs now repeat until one side wins.','This is an ICC playing condition, not an MCC Law.'],
+['Sandpaper','Cape Town, 2018','Australia’s Cameron Bancroft was caught on camera altering the condition of the ball during a Test against South Africa.','Under the MCC Laws, what can umpires do about deliberate ball tampering?',['Nothing, it’s only a code of conduct matter','Replace the ball and award 5 penalty runs','Ban the bowler for the match'],1,'Law 41.3 lets umpires change the ball and award 5 penalty runs to the batting side. Bans come from the governing bodies’ separate disciplinary codes.','Since 2022 the Laws also treat using saliva on the ball like any other unfair method.'],
+['The walk-off','Trent Bridge, 2007','Ian Bell thought the ball had been dealt with and strolled out of his ground. India’s keeper broke the stumps and appealed, and Bell was given out. India later withdrew the appeal and he returned.','Under the Laws, was the ball dead when he left his ground?',['No, so out was correct','Yes, so not out'],0,'A ball is dead only when it is clear to the umpire that both sides and both batters have ceased to regard it as in play (Law 20.1.2). Bell was out, but a captain can withdraw an appeal with the umpire’s consent (Law 31.7).','The same two Laws are still in force today.'],
+['The Ashwin–Buttler run out','IPL, 2019','R Ashwin saw Jos Buttler leave the non-striker’s crease early and removed the bails instead of delivering the ball.','Under today’s Laws, how is this dismissal classed?',['Unfair play','Run out'],1,'Run out. Since October 2022 it sits in Law 38.3, no longer under Unfair Play.','Before 2022 it was Law 41.16, and many called it a Mankad. The wording stayed the same, only its home changed.'],
+['The Bairstow stumping','Lord’s, 2023 Ashes','Jonny Bairstow ducked a bouncer, assumed the over was done and walked out of his crease. Alex Carey threw down the stumps. The umpires gave him out stumped.','Was the ball dead when Bairstow left his crease?',['Yes, so not out','No, so out'],1,'The umpires judged that the ball was still live, because the fielding side had not ceased to regard it as in play (Law 20.1.2). It was a legal stumping.','Australia could have withdrawn the appeal under Law 31.7 but chose not to.'],
+['Timed out','World Cup, Delhi, 2023','Angelo Mathews walked in, found a faulty helmet strap and asked for another. Bangladesh appealed for timed out.','Under ICC rules for men’s ODIs, how long does a new batter have to be ready?',['2 minutes','3 minutes','90 seconds'],0,'Two minutes to take strike in Tests and ODIs, and 90 seconds in T20Is. The appeal was upheld.','MCC Law 40 allows 3 minutes by default, but the ICC’s playing conditions are shorter.'],
+['Not walking','Trent Bridge, 2013 Ashes','Stuart Broad edged a ball to slip but stayed put. The umpire said not out, and Australia had no reviews left.','Do the Laws require a batter to walk when he knows he is out?',['Yes','No, the umpire decides'],1,'No. The Laws leave the decision to the umpire when there is an appeal. Walking is a matter of the Spirit of Cricket, not the Laws.','Reviews come from the ICC’s DRS, which is not part of the MCC Laws.']];
+var rw={o:null,i:0,s:0,p:-1};
+function rewind(){if(!rw.o)rw.o=RW.slice().sort(function(){return Math.random()-.5});var m=rw.o[rw.i],h;
+if(!m){if(rw.s>=5)pop();var r=rw.s>=7?'Rules historian':rw.s>=5?'Law student':'Armchair fan';app.innerHTML='<div class="card" style="margin-top:0"><div class="big">'+rw.s+'<small> / '+rw.o.length+'</small></div><p><b>'+r+'</b></p></div><button class="pri" id="rr">Replay</button> <button class="opt" id="sh">Share result</button><div id="shm" class="sub"></div>';$('#rr').onclick=function(){rw={o:null,i:0,s:0,p:-1};rewind()};$('#sh').onclick=function(){share('Pitchlore Rule Rewind: '+rw.s+'/'+rw.o.length+' ('+r+'). Could you have ruled on cricket’s big controversies?')};return}
+var a=rw.p>-1;
+h='<p class="sub" style="margin-top:0">Moment '+(rw.i+1)+' of '+rw.o.length+'</p><div class="card" style="margin-top:0"><b>'+m[0]+'</b><div style="color:var(--mu);font-size:14px">'+m[1]+'</div><p style="margin:8px 0 0">'+m[2]+'</p></div><p style="margin:12px 0 0"><b>'+m[3].trim()+'</b></p><div class="opts">'+m[4].map(function(o,i){return'<button class="opt" data-w="'+i+'"'+(a?' disabled':'')+(a&&i==m[5]?' style="border-color:var(--a);border-width:2px"':'')+'>'+o+'</button>'}).join('')+'</div>';
+if(a)h+='<div class="card"><b class="'+(rw.p==m[5]?'ok':'warn')+'">'+(rw.p==m[5]?'Correct.':'Not quite.')+'</b> '+m[6]+'</div><div class="card" style="font-size:14px"><b>Then and now:</b> '+m[7]+'</div><button class="pri" id="rn">'+(rw.i+1>=rw.o.length?'See result':'Next moment')+'</button>';
+app.innerHTML=h;app.querySelectorAll('[data-w]').forEach(function(b){b.onclick=function(){rw.p=+b.dataset.w;if(rw.p==m[5]){rw.s++;xp(15)}rewind()}});
+if(a)$('#rn').onclick=function(){rw.i++;rw.p=-1;rewind()}}
+/* ---------- MATCH REEL ---------- */
+var MS=LS.get('cl-m'),HS=[],mc=false,mac=false;
+function mi(){return{r:0,w:0,b:0,ex:0,bt:[],s:0,n:1,nx:2,mm:[],cur:[],orr:0,ot:0,ow:0,dots:0,bs:0,wl:[],sh:[]}}
+function mf(){return{v:2,id:Date.now(),setup:true,t:['Team one','Team two'],pl:['',''],pn:11,ov:10,fhOn:true,first:0,inn:0,I:[mi(),mi()],tg:0,done:false,brk:false,pend:'',fh:false,tip:'',res:'',rep:'',sty:0,wk:false,ro:null,wp:false,wpd:null,wv:0}}
+if(!MS||MS.v!==2)MS=mf();
+function ms(){LS.set('cl-m',MS)}
+function mlist(t){return(MS.pl[t]||'').split(',').map(function(x){return x.trim()}).filter(Boolean)}
+function mnm(t,i){return mlist(t)[i]||('Batter '+(i+1))}
+function mbi(){return MS.inn==0?MS.first:1-MS.first}
+function mbt(I,i){return I.bt[i]||(I.bt[i]={r:0,b:0,o:''})}
+function mov(b){return Math.floor(b/6)+'.'+(b%6)}
+function mmom(I,tx){I.mm.push(mov(I.b)+' '+tx)}
+var TIPS={Wd:'Wide (Law 22): one run to the batting side plus any runs run. The ball is re-bowled, and the striker can\u2019t be out bowled, caught or LBW.',Nb:'No-ball (Law 21): one run, and the ball is re-bowled. The striker can only be out run out, obstructing the field or hit the ball twice.',By:'Byes and leg byes (Law 23) go to the team total, not the batter.'};
+function mchk(){var I=MS.I[MS.inn];if(!(I.w>=MS.pn-1||I.b>=MS.ov*6||(MS.inn==1&&I.r>=MS.tg)))return;if(MS.inn==0){MS.tg=I.r+1;MS.brk=true}else mfin()}
+function mfin(){var I2=MS.I[1],A=MS.t[MS.first],B=MS.t[1-MS.first];MS.done=true;
+if(I2.r>=MS.tg){var k=MS.pn-1-I2.w;MS.res=B+' won by '+k+' wicket'+(k==1?'':'s')+' ('+(MS.ov*6-I2.b)+' balls left)'}else if(I2.r==MS.tg-1)MS.res='Match tied';else MS.res=A+' won by '+(MS.tg-1-I2.r)+' runs';
+marc();xp(25);pop()}
+function marc(){var A=LS.get('cl-arch')||[],W=MS.t.filter(function(n){return MS.res.indexOf(n+' won by')==0})[0]||'',bats=[];
+[0,1].forEach(function(k){var t=k==0?MS.first:1-MS.first,nl=mlist(t);MS.I[k].bt.forEach(function(v,i){if(v&&nl[i]&&v.r>0)bats.push([nl[i],v.r,v.b])})});
+var e={id:MS.id,d:new Date().toISOString().slice(0,10),t:[MS.t[MS.first],MS.t[1-MS.first]],s:[MS.I[0].r+'/'+MS.I[0].w,MS.I[1].r+'/'+MS.I[1].w],res:MS.res,w:W,b:bats,ov:MS.ov,pn:MS.pn};
+A=A.filter(function(y){return y.id!=MS.id});A.push(e);LS.set('cl-arch',A.slice(-60))}
+function marm(id){LS.set('cl-arch',(LS.get('cl-arch')||[]).filter(function(e){return e.id!=id}))}
+function marcv(){var A=LS.get('cl-arch')||[];if(!A.length)return'';var W={},P={};
+A.forEach(function(e){if(e.w)W[e.w]=(W[e.w]||0)+1;(e.b||[]).forEach(function(b){var o=P[b[0]]||(P[b[0]]={r:0,n:0,hs:0});o.r+=b[1];o.n++;if(b[1]>o.hs)o.hs=b[1]})});
+var ws=Object.keys(W).sort(function(a,b){return W[b]-W[a]}).slice(0,4).map(function(k){return esc(k)+' '+W[k]}).join(', ');
+var ps=Object.keys(P).sort(function(a,b){return P[b].r-P[a].r}).slice(0,5).map(function(k){var o=P[k];return esc(k)+' '+o.r+' runs in '+o.n+' (best '+o.hs+')'}).join('<br>');
+var rc=A.slice(-5).reverse().map(function(e){return esc(e.t[0])+' '+e.s[0]+' v '+esc(e.t[1])+' '+e.s[1]+'<br><span style="color:var(--mu)">'+esc(e.res)+', '+e.d+'</span>'}).join('<br><br>');
+return'<div class="card"><b>Season archive</b> <span style="color:var(--mu)">'+A.length+' match'+(A.length>1?'es':'')+'</span>'+(ws?'<p style="margin:8px 0 0">Wins: '+ws+'</p>':'')+(ps?'<p style="margin:8px 0 0"><b>Top run-scorers</b><br>'+ps+'</p>':'')+'<p style="margin:8px 0 0;font-size:14px"><b>Recent</b><br>'+rc+'</p><button class="opt" id="mac">'+(mac?'Tap again to clear':'Clear archive')+'</button></div>'}
+function mball(r,wt,who){if(MS.done||MS.brk||MS.setup)return;HS.push(JSON.stringify(MS));if(HS.length>150)HS.shift();
+var I=MS.I[MS.inn],p=MS.pend,tot=0,l=true,st=I.s,bat=false;MS.pend='';MS.ro=null;
+if(p=='Wd'){tot=1+r;l=false;I.ex+=tot}else if(p=='Nb'){tot=1+r;l=false;I.ex+=1;bat=true}else if(p=='By'){tot=r;I.ex+=r}else{tot=r;bat=true}
+if(bat&&r)mbt(I,st).r+=r;
+I.r+=tot;I.ot+=tot;if(p!='By')I.orr+=tot;
+if(l){I.b++;mbt(I,st).b++}
+if(p=='Nb'&&MS.fhOn)MS.fh=true;else if(l)MS.fh=false;
+I.cur.push(String(wt?'W'+(r?'+'+r:''):p=='Wd'?'Wd'+(r||''):p=='Nb'?'Nb'+(r||''):p=='By'?'B'+r:(r||'\u2022')));
+MS.wp=!wt&&bat&&r>0;MS.wpd={r:r,i:st};
+if(wt){var d=who?I.n:I.s,sv=who?I.s:I.n,nb=I.nx++;I.w++;I.ow++;mbt(I,d).o=wt;I.wl.push(I.b);I.dots=0;I.bs=0;
+var sS=who?(r%2==0):(r%2==1);if(sS){I.s=sv;I.n=nb}else{I.s=nb;I.n=sv}
+if(I.wl.length>=3&&I.b-I.wl[I.wl.length-3]<=12)mmom(I,'Collapse: three wickets in two overs')}
+else{if(l&&tot==0)I.dots++;else I.dots=0;if(I.dots==5)mmom(I,'Five dots in a row');
+if(p!='By'&&(r==4||r==6)){I.bs++;if(I.bs==2)mmom(I,'Back-to-back boundaries');if(I.bs==3)mmom(I,'Three boundaries in a row')}else if(l)I.bs=0;
+var B=mbt(I,st);if(bat&&B.r>=50&&B.r-r<50)mmom(I,'Fifty for '+mnm(mbi(),st));if(bat&&B.r>=100&&B.r-r<100)mmom(I,'Hundred for '+mnm(mbi(),st));
+if(r%2==1){var t=I.s;I.s=I.n;I.n=t}}
+if(l&&I.b%6==0){if(I.orr==0)mmom(I,I.ow>0?'Wicket maiden':'Maiden over');else if(I.ot>=15)mmom(I,'Big over: '+I.ot+' runs');if(I.ow>=2)mmom(I,'Double strike: '+I.ow+' wickets in an over');var q=I.s;I.s=I.n;I.n=q;I.cur=[];I.orr=0;I.ot=0;I.ow=0}
+mchk();ms();mrender()}
+function mundo(){if(!HS.length)return;MS=JSON.parse(HS.pop());if(!MS.done)marm(MS.id);ms();mrender()}
+function mtop(k){var x=MS.I[k],t=k==0?MS.first:1-MS.first,bs=-1,bi=-1;x.bt.forEach(function(v,i){if(v&&v.r>bs){bs=v.r;bi=i}});return bi<0||bs<=0?'':mnm(t,bi)+' '+bs+' off '+x.bt[bi].b}
+function mfacts(){var A=MS.first;return[0,1].map(function(k){var x=MS.I[k];return MS.t[k==0?A:1-A]+' '+x.r+'/'+x.w+' in '+mov(x.b)+' overs'+(mtop(k)?' (top scorer '+mtop(k)+')':'')}).join('; ')+'. Result: '+MS.res+'. Moments: '+(MS.I[0].mm.concat(MS.I[1].mm).slice(0,8).join('; ')||'none')+'. '+MS.pn+' players a side, '+MS.ov+' overs.'}
+function mtext(q){return(typeof claude==='undefined'?Promise.resolve(null):claude.use('sample')).then(function(s){if(!s)throw 0;return s(q,{cache:false})}).then(function(r){return r.text})}
+function mwheel(k,id){var I=MS.I[k],h='<div style="max-width:250px;margin:8px auto"><svg viewBox="0 0 200 200" '+(id?'id="'+id+'" ':'')+'role="img" aria-label="Wagon wheel"><circle cx="100" cy="100" r="96" fill="var(--g)" stroke="var(--a)" stroke-width="2"/><circle cx="100" cy="100" r="36" fill="none" stroke="var(--a)" stroke-dasharray="4 3"/><rect x="97" y="82" width="6" height="36" fill="#c9b27a"/>';
+I.sh.forEach(function(q){h+='<line x1="100" y1="100" x2="'+q[0]+'" y2="'+q[1]+'" stroke="'+(q[2]==6?'var(--b)':q[2]==4?'var(--a)':'var(--mu)')+'" stroke-width="'+(q[2]>=4?2.5:1.5)+'"/>'});return h+'</svg></div>'}
+function mrender(){mc=false;if(MS.setup)msetup();else if(MS.done)mend();else if(MS.brk)mbrk();else mscore()}
+function msetup(){function rd(){MS.t=[$('#t0').value||'Team one',$('#t1').value||'Team two'];MS.pl=[$('#p0').value,$('#p1').value];MS.pn=+$('#pn').value||11}
+var i=function(id,v,p){return'<input id="'+id+'" value="'+esc(v)+'" placeholder="'+p+'" style="margin-top:8px">'},po='';
+for(var n=2;n<=11;n++)po+='<option value="'+n+'"'+(MS.pn==n?' selected':'')+'>'+n+' players a side</option>';
+app.innerHTML='<p class="sub">Score a real match ball by ball. Match Reel adds Law tips, a tension meter, wagon wheels and a match story.</p>'+i('t0',MS.t[0],'Team one')+i('p0',MS.pl[0],'Optional: team one players, comma separated')+i('t1',MS.t[1],'Team two')+i('p1',MS.pl[1],'Optional: team two players, comma separated')+
+'<div class="sub" style="margin:12px 0 4px">Players per side. A side is all out when one batter is left (players minus one wickets).</div><select id="pn">'+po+'</select><div class="seg" style="margin-top:12px">'+[5,10,20,40,50].map(function(o){return'<button data-o="'+o+'" aria-pressed="'+(MS.ov==o)+'">'+o+' overs</button>'}).join('')+'</div><div class="seg"><button data-f="0" aria-pressed="'+(MS.first==0)+'">Team one bats first</button><button data-f="1" aria-pressed="'+(MS.first==1)+'">Team two bats first</button></div><div class="seg"><button data-h="1" aria-pressed="'+MS.fhOn+'">Free hit after no-ball: on</button><button data-h="0" aria-pressed="'+!MS.fhOn+'">Free hit: off</button></div><button class="pri" id="ms">Start scoring</button>'+marcv();
+app.querySelectorAll('[data-o]').forEach(function(b){b.onclick=function(){rd();MS.ov=+b.dataset.o;msetup()}});
+app.querySelectorAll('[data-f]').forEach(function(b){b.onclick=function(){rd();MS.first=+b.dataset.f;msetup()}});
+app.querySelectorAll('[data-h]').forEach(function(b){b.onclick=function(){rd();MS.fhOn=b.dataset.h=='1';msetup()}});
+$('#ms').onclick=function(){rd();MS.setup=false;MS.id=Date.now();HS=[];ms();mrender()};
+var ma=$('#mac');if(ma)ma.onclick=function(){if(!mac){mac=true;msetup();return}mac=false;LS.set('cl-arch',[]);msetup()}}
+function mscore(){var I=MS.I[MS.inn],b=mbi(),mx=MS.ov*6,crr=I.b?I.r/I.b*6:0,h='',wl=MS.pn-1-I.w;
+h+='<div class="card" style="margin-top:0"><b>'+esc(MS.t[b])+' batting</b><div class="big">'+I.r+'/'+I.w+'<small> '+mov(I.b)+' of '+MS.ov+' overs</small></div><div style="color:var(--mu);font-size:14px">'+wl+' wicket'+(wl==1?'':'s')+' in hand</div>';
+if(MS.inn==1){var need=MS.tg-I.r,bl=mx-I.b,rr=bl>0?need/bl*6:0,F=MS.I[0].r/Math.max(1,MS.I[0].b)*6,ra=rr/Math.max(F,.5)*(1+.8*I.w/Math.max(1,MS.pn-1)),lb=ra<.8?'Cruising':ra<1.2?'Balanced':ra<1.6?'Tense':'Nail-biter',ps=Math.max(4,Math.min(96,ra*50));
+h+='<div style="margin:8px 0 6px">Need '+need+' from '+bl+' balls. Required rate '+rr.toFixed(1)+'</div><div class="tens"><i style="left:'+ps+'%"></i></div><div style="color:var(--mu);font-size:14px;margin-top:6px">Tension: <b>'+lb+'</b></div>'}else h+='<div style="margin-top:4px">Run rate '+crr.toFixed(1)+'</div>';
+h+='</div>';var s=mbt(I,I.s),n=mbt(I,I.n);
+h+='<div class="card">'+esc(mnm(b,I.s))+'* <b>'+s.r+'</b> ('+s.b+')<br>'+esc(mnm(b,I.n))+' <b>'+n.r+'</b> ('+n.b+')</div>';
+h+='<div class="card" style="display:flex;gap:6px;flex-wrap:wrap;min-height:58px">'+(I.cur.length?I.cur.map(function(x){return'<span class="ball '+(x[0]=='W'?'bw':x=='4'?'b4':x=='6'?'b6':'')+'">'+x+'</span>'}).join(''):'<span style="color:var(--mu)">New over</span>')+'</div>';
+if(MS.fh)h+='<div class="card warn"><b>Free hit.</b> The striker can only be out run out, obstructing the field or hit the ball twice.</div>';
+if(MS.wp)h+='<div class="card"><b>Where did it go?</b> <span style="color:var(--mu)">Tap the field for the wagon wheel (optional). Straight is up.</span>'+mwheel(MS.inn,'mtp')+'<button class="opt" id="mskip">Skip</button></div>';
+var pb=function(n){return'<button data-n="'+n+'">'+n+'</button>'};
+h+='<div class="pad">'+[0,1,2,3,4,6].map(pb).join('')+'<button class="x" data-p="Wd" aria-pressed="'+(MS.pend=='Wd')+'">Wide</button><button class="x" data-p="Nb" aria-pressed="'+(MS.pend=='Nb')+'">No-ball</button><button class="x" data-p="By" aria-pressed="'+(MS.pend=='By')+'">Byes</button><button class="w" id="mw">Wicket</button></div>';
+if(MS.pend)h+='<div class="sub" style="margin-top:8px">'+({Wd:'Wide',Nb:'No-ball',By:'Byes'}[MS.pend])+' selected. Now tap the runs (0 for none).</div>';
+if(MS.ro){var R=MS.ro;h+='<div class="card"><b>Run out</b><div class="sub" style="margin:6px 0">Runs completed first</div><div class="seg">'+[0,1,2,3].map(function(k){return'<button data-rr="'+k+'" aria-pressed="'+(R.r==k)+'">'+k+'</button>'}).join('')+'</div><div class="sub" style="margin:6px 0">Who is out?</div><div class="seg"><button data-rw="0" aria-pressed="'+(R.who==0)+'">'+esc(mnm(b,I.s))+' (striker)</button><button data-rw="1" aria-pressed="'+(R.who==1)+'">'+esc(mnm(b,I.n))+'</button></div><button class="pri" id="mro">Confirm run out</button></div>'}
+else if(MS.wk){var rs=MS.fh||MS.pend=='Nb',ws=MS.pend=='Wd';h+='<div class="opts">'+['Bowled','Caught','LBW','Stumped','Hit wicket','Run out','Obstructing the field','Hit the ball twice'].map(function(d){var no=(rs&&['Run out','Obstructing the field','Hit the ball twice'].indexOf(d)<0)||(ws&&['Bowled','Caught','LBW'].indexOf(d)>-1);return'<button class="opt" data-d="'+d+'"'+(no?' disabled':'')+'>'+d+'</button>'}).join('')+'</div>'}
+if(MS.tip)h+='<div class="card" style="font-size:14px"><b>Law note:</b> '+MS.tip+'</div>';
+var mm=I.mm.slice(-3);if(mm.length)h+='<div class="card" style="font-size:14px"><b>Moments</b><br>'+mm.map(esc).join('<br>')+'</div>';
+h+='<div class="seg" style="margin-top:12px"><button id="mu"'+(HS.length?'':' disabled')+'>Undo</button><button id="me">End innings</button><button id="mn">'+(mc?'Tap again to discard':'New match')+'</button></div>';
+app.innerHTML=h;
+app.querySelectorAll('[data-n]').forEach(function(x){x.onclick=function(){MS.wk=false;MS.tip='';mball(+x.dataset.n,'',0)}});
+app.querySelectorAll('[data-p]').forEach(function(x){x.onclick=function(){var p=x.dataset.p;MS.pend=MS.pend==p?'':p;MS.tip=MS.pend?TIPS[p]:'';MS.wk=false;MS.ro=null;mscore()}});
+app.querySelectorAll('[data-rr]').forEach(function(x){x.onclick=function(){MS.ro.r=+x.dataset.rr;mscore()}});
+app.querySelectorAll('[data-rw]').forEach(function(x){x.onclick=function(){MS.ro.who=+x.dataset.rw;mscore()}});
+var mro=$('#mro');if(mro)mro.onclick=function(){var Q=MS.ro;MS.tip='Run out (Law 38): runs completed before the wicket fell count, the run in progress does not.';mball(Q.r,'Run out',Q.who)};
+$('#mw').onclick=function(){MS.wk=!MS.wk;MS.ro=null;mscore()};
+app.querySelectorAll('[data-d]').forEach(function(x){x.onclick=function(){var d=x.dataset.d;MS.wk=false;if(d=='Run out'){MS.ro={r:0,who:0};mscore();return}MS.tip='Wicket: '+d+'. The new batter takes the striker\u2019s end.';mball(0,d,0)}});
+var tp=$('#mtp');if(tp&&MS.wp)tp.onclick=function(e){var r=tp.getBoundingClientRect(),x=Math.round((e.clientX-r.left)/r.width*200),y=Math.round((e.clientY-r.top)/r.height*200);if(Math.hypot(x-100,y-100)>98)return;I.sh.push([x,y,MS.wpd.r,MS.wpd.i]);MS.wp=false;ms();mscore()};
+var sk=$('#mskip');if(sk&&MS.wp)sk.onclick=function(){MS.wp=false;mscore()};
+$('#mu').onclick=mundo;
+$('#me').onclick=function(){HS.push(JSON.stringify(MS));MS.wp=false;if(MS.inn==0){MS.tg=I.r+1;MS.brk=true}else mfin();ms();mrender()};
+$('#mn').onclick=function(){if(!mc){mc=true;mscore();return}mc=false;MS=mf();HS=[];ms();mrender()}}
+function mbrk(){var I=MS.I[0];app.innerHTML='<div class="card" style="margin-top:0"><b>Innings break</b><div class="big">'+I.r+'/'+I.w+'<small> '+esc(MS.t[MS.first])+'</small></div><p>'+esc(MS.t[1-MS.first])+' need <b>'+MS.tg+'</b> to win from '+MS.ov*6+' balls.</p></div><button class="pri" id="m2">Start second innings</button> <button class="opt" id="mu">Undo</button>';$('#m2').onclick=function(){MS.inn=1;MS.brk=false;MS.fh=false;MS.pend='';MS.tip='';MS.wp=false;ms();mrender()};$('#mu').onclick=mundo}
+function mcard(){var c=document.createElement('canvas');c.width=640;c.height=1000;var g=c.getContext('2d');g.fillStyle='#0f1713';g.fillRect(0,0,640,1000);
+function tx(s,x,y,sz,col,wt,w){s=String(s);var z=sz;g.fillStyle=col;do{g.font=(wt||'600')+' '+z+'px system-ui,sans-serif';z-=2}while(w&&g.measureText(s).width>w&&z>12);g.fillText(s,x,y)}
+tx('PITCHLORE \u00b7 MATCH REEL',32,56,18,'#4cc79a','800');tx(MS.res,32,116,40,'#eef1ea','800',576);
+var A=MS.first,y=190;[0,1].forEach(function(k){var x=MS.I[k];tx(MS.t[k==0?A:1-A],32,y,26,'#eef1ea','700',380);tx(x.r+'/'+x.w,440,y,34,'#4cc79a','800',170);tx(mov(x.b)+' overs',32,y+30,18,'#93a39a','500');if(mtop(k))tx('Top: '+mtop(k),170,y+30,18,'#93a39a','500',440);y+=90});
+y=400;tx('MOMENTS',32,y,16,'#4cc79a','800');var mm=MS.I[0].mm.concat(MS.I[1].mm).slice(0,4);if(!mm.length)mm=['A quiet match'];mm.forEach(function(m,i){tx(m,32,y+34+i*32,20,'#eef1ea','500',576)});
+[0,1].forEach(function(k){var cx=170+k*300,cy=760,r=130;g.fillStyle='#1d3a2a';g.beginPath();g.arc(cx,cy,r,0,7);g.fill();g.strokeStyle='#4cc79a';g.lineWidth=2;g.stroke();MS.I[k].sh.forEach(function(q){g.strokeStyle=q[2]==6?'#ff7a6e':q[2]==4?'#4cc79a':'#93a39a';g.lineWidth=q[2]>=4?3:2;g.beginPath();g.moveTo(cx,cy);g.lineTo(cx+(q[0]-100)*1.3,cy+(q[1]-100)*1.3);g.stroke()});tx(MS.t[k==0?A:1-A]+' scoring shots',cx-r,cy+r+34,16,'#93a39a','500',2*r)});
+tx('Scored with Pitchlore',32,970,16,'#93a39a','500');return c}
+function mend(){var A=MS.first,I=MS.I;var h='<div class="card" style="margin-top:0"><b>'+esc(MS.res)+'</b>'+[0,1].map(function(k){var x=I[k];return'<p style="margin:8px 0 0">'+esc(MS.t[k==0?A:1-A])+' <b>'+x.r+'/'+x.w+'</b> ('+mov(x.b)+' overs)'+(mtop(k)?'<br><span style="color:var(--mu);font-size:14px">Top: '+esc(mtop(k))+'</span>':'')+'</p>'}).join('')+'<p style="margin:8px 0 0;color:var(--mu);font-size:14px">Saved to your season archive.</p></div>';
+var all=I[0].mm.map(function(x){return'1st: '+x}).concat(I[1].mm.map(function(x){return'2nd: '+x}));
+h+='<div class="card" style="font-size:14px"><b>Moments ('+all.length+')</b><br>'+(all.length?all.slice(0,12).map(esc).join('<br>'):'A quiet match. No streaks or milestones.')+'</div>';
+h+='<div class="card"><b>Wagon wheel</b><div class="seg" style="margin-top:8px">'+[0,1].map(function(k){return'<button data-v="'+k+'" aria-pressed="'+(MS.wv==k)+'">'+esc(MS.t[k==0?A:1-A])+'</button>'}).join('')+'</div>'+(I[MS.wv].sh.length?mwheel(MS.wv,''):'<p style="color:var(--mu)">No shots were tapped on the field for this innings.</p>')+'<div style="color:var(--mu);font-size:13px">Green: fours. Red: sixes. Grey: other runs.</div></div>';
+h+='<button class="pri" id="mc">Scorecard image</button><div id="cbox"></div>';
+h+='<p style="margin:14px 0 6px"><b>Match story</b></p><div class="seg">'+['Village green poet','Radio commentator','Tabloid'].map(function(s,i){return'<button data-s="'+i+'" aria-pressed="'+(MS.sty==i)+'">'+s+'</button>'}).join('')+'</div><button class="pri" id="mr">Write the match report</button> <button class="opt" id="mh">Share</button><div class="card" id="rep" style="display:'+(MS.rep?'block':'none')+';white-space:pre-wrap"></div><div id="shm" class="sub"></div><div class="seg" style="margin-top:12px"><button id="mu">Undo last ball</button><button id="mn">New match</button></div>';
+app.innerHTML=h;$('#rep').textContent=MS.rep;
+app.querySelectorAll('[data-v]').forEach(function(x){x.onclick=function(){MS.wv=+x.dataset.v;ms();mend()}});
+app.querySelectorAll('[data-s]').forEach(function(x){x.onclick=function(){MS.sty=+x.dataset.s;ms();mend()}});
+$('#mc').onclick=function(){var c=mcard(),box=$('#cbox');box.innerHTML='';var im=new Image();im.src=c.toDataURL('image/png');im.alt='Scorecard';im.style.cssText='width:100%;border-radius:12px;margin-top:8px';box.appendChild(im);
+(typeof claude==='undefined'?Promise.resolve(null):claude.use('downloads')).then(function(d){if(!d)return;var b=document.createElement('button');b.className='pri';b.textContent='Save image';b.onclick=function(){c.toBlob(function(bl){d.save({filename:'match-reel.png',data:bl}).catch(function(){})})};box.appendChild(b)}).catch(function(){})};
+$('#mr').onclick=function(){$('#rep').style.display='block';$('#rep').textContent='Writing\u2026';mtext('Write a match report of about 90 words in the style of a '+['village green poet (light rhyme allowed)','radio commentator','tabloid back-page sports writer'][MS.sty]+'. Use ONLY these facts and invent no names or numbers: '+mfacts()+' Plain text only.').then(function(t){MS.rep=String(t).trim()}).catch(function(){MS.rep='Full time. '+mfacts()}).then(function(){ms();mend()})};
+$('#mh').onclick=function(){share('Pitchlore Match Reel\n'+mfacts()+(MS.rep?'\n\n'+MS.rep:''))};
+$('#mu').onclick=mundo;
+$('#mn').onclick=function(){MS=mf();HS=[];ms();mrender()}}
+/* ---------- LEVELS, CONFETTI, MOTION ---------- */
+var LV=['Net bowler','Club regular','County pro','Test cap','Legend'];
+function xpv(){return+LS.get('cl-xp')||0}
+function xpr(){var x=xpv(),l=Math.min(Math.floor(x/100),4),el=$('#lv');if(el)el.innerHTML='<b>Level '+(l+1)+' \u00b7 '+LV[l]+'</b><div class="xb"><i style="width:'+(l>=4?100:x%100)+'%"></i></div><span>'+x+' XP</span>'}
+function xp(n){LS.set('cl-xp',xpv()+n);xpr()}
+function pop(){if(!document.body||(typeof matchMedia!=='undefined'&&matchMedia('(prefers-reduced-motion: reduce)').matches))return;for(var i=0;i<18;i++){var e=document.createElement('span');e.className='cf';e.textContent=['\ud83c\udfcf','\ud83d\udd34','\u2b50','\u2728'][i%4];e.style.left=Math.random()*96+'vw';e.style.animationDelay=Math.random()*.4+'s';document.body.appendChild(e);setTimeout(function(x){return function(){x.remove()}}(e),2200)}}
+function anim(){if(!app.classList)return;app.classList.add('in');setTimeout(function(){app.classList.remove('in')},500)}
+var TABS=[["d","\ud83d\udd0d Guess Who",daily],["c","\ud83e\udde2 Captain\u2019s Call",cap],["f","\ud83e\udded Set the Field",field],["u","\u261d\ufe0f Howzat?",ump],["r","\u23ea Rewind",rewind],["m","\ud83c\udfac Match Reel",mrender],["b","\ud83d\udcd6 Book Cricket",book],["n","\ud83d\udc4b New here?",learn]];
+$("#nav").innerHTML=TABS.map(function(t){return'<button role="tab" data-t="'+t[0]+'" aria-selected="false">'+t[1]+'</button>'}).join("");
+function go(t){anim();document.querySelectorAll("nav button").forEach(function(b){b.setAttribute("aria-selected",b.dataset.t==t)});TABS.filter(function(x){return x[0]==t})[0][2]()}
+document.querySelectorAll("nav button").forEach(function(b){b.onclick=function(){go(b.dataset.t)}});xpr();go("d");
+</script>
+</body>
+</html>
